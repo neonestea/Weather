@@ -1,3 +1,17 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
 h1, h2, h3 {
     color: #607280;
 }
@@ -184,7 +198,7 @@ body {
 }
 
 .smallIcon {
-    width: 7%;
+    width: 13%;
 
 }
 
@@ -203,6 +217,7 @@ body {
     background: #EBF1F5;
     padding-left: 10px;
     padding-right: 10px;
+    outline: none;
 }
 
 .btn {
@@ -229,6 +244,14 @@ body {
         transform: translateY(-7px);
     }
 
+    .btn:disabled {
+        background: #E6E7E7;
+        transform: none;
+        box-shadow: none;
+        color: #524f4e;
+        cursor: default;
+    }
+
 .bigBtn {
     height: 10vh;
     width: 10vh;
@@ -241,6 +264,17 @@ body {
     margin-left: 5%;
 }
 
+.askBtn {
+    opacity: 0.9;
+    width: 20%;
+
+}
+
+    .askBtn:hover {
+        opacity: 1;
+        color: rgba(96, 114, 128, 0.9);
+    }
+
 .shortened {
     max-width: 80%;
     margin: auto;
@@ -252,4 +286,31 @@ body {
     min-width: 50%;
     display: flex;
     justify-content: flex-end;
+}
+
+.geoAsk {
+    opacity: 0.5;
+    position: fixed;
+    color: rgba(96, 114, 128, 0.9);
+    text-align: center;
+    padding-bottom: 2%;
+    background: rgba(96, 114, 128, 0.1);
+    margin-top: 5px;
+    border-radius: 6px;
+    transition: all 2s ease-in-out;
+}
+
+    .geoAsk:hover {
+    opacity: 1;
+    }
+
+.loader {
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 9999;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -125px 0 0 -125px;
 }
