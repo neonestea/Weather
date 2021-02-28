@@ -1,0 +1,88 @@
+﻿@{
+    Layout = "";
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <link href="~/css/site.css"
+          rel="stylesheet" />
+    <title>Янкова А.А. М33091</title>
+    <meta name="keywords" content="Погода" />
+    <meta name="description" content="Погода" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <header></header>
+    <main>
+        <img class="loader" id="loader" src="~/img/loader.gif" alt="loader"/>
+        <div class="geoAsk" id="geo_ask">
+            <p>Делиться геопозицией?</p>
+            <div class="mainLine" style="justify-content: space-evenly;">
+                <button class="btn askBtn" onclick="agreeGeo();">Да</button>
+                <button class="btn askBtn" onclick="declineGeo();">Нет</button>
+            </div>
+
+        </div>
+        <div class="mainLine shortened" style=" margin-bottom: 10%;">
+            <h1>Погода здесь</h1>
+            <button class="btn bigBtn" onclick="updateGeolocation();">⟳</button>
+        </div>
+        <div class="mainCard">
+            <div class="mainAll">
+                <h3 class="mainCity" style="margin: auto;"></h3>
+                <div class="mainBase">
+                    <img class="bigIcon" alt="weatherIcon"/>
+                    <h4 class="mainTemp"></h4>
+                </div>
+            </div>
+            <ul class="params">
+                <li class="line">
+                    <p class="indics">Ветер</p>
+                    <p class="vals wind"></p>
+                </li>
+                <li class="line">
+                    <p class="indics">Погода</p>
+                    <p class="vals clouds"></p>
+                </li>
+                <li class="line">
+                    <p class="indics">Давление</p>
+                    <p class="vals pressure"></p>
+                </li>
+                <li class="line">
+                    <p class="indics">Влажность</p>
+                    <p class="vals humidity"></p>
+                </li>
+                <li class="line">
+                    <p class="indics">Координаты</p>
+                    <p class="vals coords"></p>
+                </li>
+            </ul>
+
+        </div>
+        <div class="mainLine shortened">
+            <h2>Избранное</h2>
+            <div class="mainLine inp">
+                <input id="text" class="inpStyle" list="cities" maxlength="25" size="27" placeholder="Добавить город" autocomplete="off" />
+                <datalist id="cities">
+                    <option value="Moscow" />
+                    <option value="Vladimir" />
+                    <option value="Omsk" />
+                    <option value="Tomsk" />
+                    <option value="Tula" />
+                    <option value="Novgorod" />
+                    <option value="Yakutsk" />
+                </datalist>
+                <button id="addBtn" class="btn midBtn" onclick="addCity();" disabled>+</button>
+            </div>
+        </div>
+        <ul class="cards" id="cards">
+            
+        </ul>
+    </main>
+    <footer></footer>
+    <script src="~/js/weather.js"></script>
+</body>
+</html>
