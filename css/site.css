@@ -223,7 +223,7 @@ body {
 .btn {
     height: 23%;
     width: 7%;
-    border-radius: 45px;
+    border-radius: 50%;
     border: none;
     color: #524f4e;
     background: white;
