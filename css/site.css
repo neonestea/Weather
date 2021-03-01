@@ -1,15 +1,12 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 h1, h2, h3 {
@@ -31,9 +28,10 @@ h3 {
 }
 
 h4 {
-     font-size: 150%;
-     color: black;
+    font-size: 150%;
+    color: black;
 }
+
 .mainTemp {
     font-size: 5em;
     margin: 0 auto;
@@ -47,49 +45,51 @@ p {
 
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -97,12 +97,13 @@ body {
     margin-bottom: 60px;
     background: #F5FBFF;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }
 
 
@@ -118,7 +119,6 @@ body {
     margin: auto;
     margin-top: 4%;
     max-width: 80%;
-
 }
 
 .mainCard {
@@ -166,7 +166,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 .line {
@@ -199,11 +198,10 @@ body {
 
 .smallIcon {
     width: 13%;
-
 }
 
 .inp {
-    display:flex;
+    display: flex;
     justify-content: flex-end;
     align-items: center;
     min-width: 50%;
@@ -221,8 +219,8 @@ body {
 }
 
 .btn {
-    height: 23%;
-    width: 7%;
+    height: 24px;
+    width: 24px;
     border-radius: 50%;
     border: none;
     color: #524f4e;
@@ -260,16 +258,15 @@ body {
 }
 
 .midBtn {
-    height: 24px;
-    width: 24px;
+    height: 30px;
+    width: 30px;
     font-size: 1.5em;
     margin-left: 5%;
 }
 
 .askBtn {
     opacity: 0.9;
-    width: 20%;
-
+    
 }
 
     .askBtn:hover {
@@ -307,7 +304,7 @@ body {
 }
 
     .geoAsk:hover {
-    opacity: 1;
+        opacity: 1;
     }
 
 .loader {
