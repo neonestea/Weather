@@ -1,4 +1,4 @@
-﻿let geoAccess = false;
+let geoAccess = false;
 let lat = "55";
 let lon = "37";
 const text = document.getElementById("text");
@@ -133,7 +133,15 @@ function allStorage() {
 
 
 
-function addCityToLocalStorage() {
+function addCityToLocalStorage(cityNumber) {
+    let jsonMessage = { city: cityName };
+    let json = JSON.stringify(jsonMessage);
+    localStorage.setItem(cityNumber, json);
+    localStorage.setItem('citiesCount', ++counter);
+    
+}
+
+function getCityNumber(){
     const allCities = allStorage();
     const cityName = text.value;
     if (allCities.indexOf(cityName) == -1) {
@@ -142,13 +150,8 @@ function addCityToLocalStorage() {
             counter = 0;
         }
         let cityNumber = 'cityN' + counter;
-        let jsonMessage = { city: cityName };
-        let json = JSON.stringify(jsonMessage);
-        localStorage.setItem(cityNumber, json);
-        localStorage.setItem('citiesCount', ++counter);
         return cityNumber;
     }
-    
 }
 
 async function makeRequest(queryWeather) {
@@ -176,13 +179,7 @@ function createCityCard(cityName, cityNumber) {
     loader.style.display = 'block';
     document.body.style.overflow = 'hidden';
 
-    let tempInfo = "?";
-    let iconSrcInfo = "?";
-    let windInfo = "?";
-    let cloudsInfo = "?";
-    let pressureInfo = "?";
-    let humidityInfo = "?";
-    let coordsInfo = "?";
+
     let queryWeather = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=a079906fe74d05d272d283d1f9b625de';
 
         
@@ -190,9 +187,8 @@ function createCityCard(cityName, cityNumber) {
     let cityCard = makeElement('li', 'card', "");
     let mainLine = makeElement('div', 'mainLine', "");
         let name = makeElement('h3', '', cityName);
-        let temp = makeElement('h4', '', tempInfo);
+        let temp = makeElement('h4', '', '');
         let icon = makeElement('img', 'smallIcon', "");
-        icon.src = iconSrcInfo;
         let button = makeElement('button', 'btn', "✕");
         
 
@@ -200,85 +196,94 @@ function createCityCard(cityName, cityNumber) {
 
         let line1 = makeElement('li', 'line', "");
         let indic1 = makeElement('p', 'indics', "Ветер");
-        let val1 = makeElement('p', 'vals', windInfo);
+        let val1 = makeElement('p', 'vals',  '');
         
 
         let line2 = makeElement('li', 'line', "");
         let indic2 = makeElement('p', 'indics', "Погода");
-        let val2 = makeElement('p', 'vals', cloudsInfo);
+        let val2 = makeElement('p', 'vals', '');
         
         let line3 = makeElement('li', 'line', "");
         let indic3 = makeElement('p', 'indics', "Давление");
-        let val3 = makeElement('p', 'vals', pressureInfo);
+        let val3 = makeElement('p', 'vals', '');
         
 
         let line4 = makeElement('li', 'line', "");
         let indic4 = makeElement('p', 'indics', "Влажность");
-        let val4 = makeElement('p', 'vals', humidityInfo);
+        let val4 = makeElement('p', 'vals', '');
        
 
         let line5 = makeElement('li', 'line', "");
         let indic5 = makeElement('p', 'indics', "Координаты");
-        let val5 = makeElement('p', 'vals', coordsInfo);
+        let val5 = makeElement('p', 'vals', '');
         
     
     fetch(queryWeather)
         .then(function (resp) { return resp.json() })
         .then(function (data) {
             console.log(data);
-            temp.textContent = Math.round(data.main.temp - 273) + '°C';
-            icon.src = "https://openweathermap.org/img/wn/" + data.weather[0]['icon'] + "@2x.png";
-            val1.textContent = "Скорость: " + data.wind.speed + ", градусы: " + data.wind.deg;
-            val2.textContent = "" + data.weather[0]['description'];
-            val3.textContent = "" + data.main.pressure;
-            val4.textContent = "" + data.main.humidity;
-            val5.textContent = "[" + data.coord.lat + ", " + data.coord.lon + "]";
+                temp.textContent = Math.round(data.main.temp - 273) + '°C';
+                icon.src = "https://openweathermap.org/img/wn/" + data.weather[0]['icon'] + "@2x.png";
+                val1.textContent = "Скорость: " + data.wind.speed + ", градусы: " + data.wind.deg;
+                val2.textContent = "" + data.weather[0]['description'];
+                val3.textContent = "" + data.main.pressure;
+                val4.textContent = "" + data.main.humidity;
+                val5.textContent = "[" + data.coord.lat + ", " + data.coord.lon + "]";
 
         })
         .catch(function (err) {
-            alert(err);
+            console.error("Unknown city");
+            text.value = '';
+            button.disabled = true;
+
+            return;
         });
-    if (temp.textContent == "?") {
-        name.textContent = "Unknown";
-    }
-    mainLine.appendChild(name);
-    mainLine.appendChild(temp);
-    mainLine.appendChild(icon);
-    mainLine.appendChild(button);
-    cityCard.appendChild(mainLine);
-    line1.appendChild(indic1);
-    line1.appendChild(val1);
-    line2.appendChild(indic2);
-    line2.appendChild(val2);
-    line3.appendChild(indic3);
-    line3.appendChild(val3);
-    line4.appendChild(indic4);
-    line4.appendChild(val4);
-    line5.appendChild(indic5);
-    line5.appendChild(val5);
+
+        mainLine.appendChild(name);
+        mainLine.appendChild(temp);
+        mainLine.appendChild(icon);
+        mainLine.appendChild(button);
+        cityCard.appendChild(mainLine);
+        line1.appendChild(indic1);
+        line1.appendChild(val1);
+        line2.appendChild(indic2);
+        line2.appendChild(val2);
+        line3.appendChild(indic3);
+        line3.appendChild(val3);
+        line4.appendChild(indic4);
+        line4.appendChild(val4);
+        line5.appendChild(indic5);
+        line5.appendChild(val5);
 
         params.appendChild(line1);
         params.appendChild(line2);
         params.appendChild(line3);
         params.appendChild(line4);
         params.appendChild(line5);
-
         cityCard.appendChild(params);
 
-    cityCard.id = cityNumber;
+        cityCard.id = cityNumber;
+        return cityCard;
 
-
+        
     loader.style.display = 'none';
     document.body.style.overflow = 'auto';
 
-        return cityCard;   
+        
     
 }
 
 function addCity() {
-    const cityNumber = addCityToLocalStorage();
+    const cityNumber = getCityNumber();
     const cityName = text.value;
-    cards.appendChild(createCityCard(cityName, cityNumber));
+    let city = createCityCard(cityName, cityNumber);
+    if (city) {
+        cards.appendChild();
+    }
+    else {
+        alert("Unknown city!");
+    }
+    addCityToLocalStorage(cityNumber);
     text.value = "";
     addBtn.disabled = true;
 
@@ -307,7 +312,11 @@ function showFavorites() {
         const name = allCities[i];
         const cityNumber = defineKey(name);
         let cityCard = createCityCard(allCities[i], cityNumber);
-        cards.appendChild(cityCard);
+        if (cityCard) {
+            cards.appendChild(cityCard);
+        }
+
+        
     }
 
 }
