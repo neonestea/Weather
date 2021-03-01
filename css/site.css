@@ -253,16 +253,16 @@ body {
     }
 
 .bigBtn {
-    height: 10vh;
-    width: 10vh;
+    height: 48px;
+    width: 48px;
     font-size: 2em;
-  margin-left: 5%;
+    margin-left: 5%;
 }
 
 .midBtn {
-    height: 5vh;
-    width: 7vh;
-  font-size: 1.5em;
+    height: 24px;
+    width: 24px;
+    font-size: 1.5em;
     margin-left: 5%;
 }
 
