@@ -238,7 +238,9 @@ function createCityCard(cityName, cityNumber) {
         .catch(function (err) {
             alert(err);
         });
-
+    if (tempInfo == "?") {
+        name.textContent = "Unknown";
+    }
     mainLine.appendChild(name);
     mainLine.appendChild(temp);
     mainLine.appendChild(icon);
