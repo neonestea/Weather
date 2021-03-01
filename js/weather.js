@@ -277,12 +277,9 @@ function addCity() {
     const cityNumber = getCityNumber();
     const cityName = text.value;
     let city = createCityCard(cityName, cityNumber);
-    if (city) {
+
         cards.appendChild();
-    }
-    else {
-        alert("Unknown city!");
-    }
+
     addCityToLocalStorage(cityNumber);
     text.value = "";
     addBtn.disabled = true;
