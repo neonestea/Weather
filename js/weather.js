@@ -236,7 +236,6 @@ function createCityCard(cityName, cityNumber) {
             text.value = '';
             button.disabled = true;
 
-            return;
         });
 
         mainLine.appendChild(name);
