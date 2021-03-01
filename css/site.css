@@ -259,7 +259,7 @@ body {
 
 .midBtn {
     height: 30px;
-    width: 30px;
+   flex: 0 0 24px;
     font-size: 1.5em;
     margin-left: 5%;
 }
