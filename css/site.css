@@ -276,9 +276,13 @@ body {
     }
 
 .shortened {
-    max-width: 80%;
-    margin: auto;
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+    padding: 0;
+    margin: auto;
+    margin-top: 4%;
+    max-width: 80%;
 }
 
 .inp {
