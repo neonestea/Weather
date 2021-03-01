@@ -222,7 +222,7 @@ body {
 
 .btn {
     height: 23%;
-    width: 7%;
+    width: auto;
     border-radius: 50%;
     border: none;
     color: #524f4e;
