@@ -56,7 +56,7 @@ function getWeatherAPI(city="") {
     else {
         let loader = document.getElementById('loader');
         loader.style.display = 'block';
-        document.body.style.overflow = 'hidden';
+
 
         let queryWeather = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=a079906fe74d05d272d283d1f9b625de';
 
@@ -78,7 +78,7 @@ function getWeatherAPI(city="") {
 
                 
                 loader.style.display = 'none';
-                document.body.style.overflow = 'auto';
+
 
             })
             .catch(function (err) {
@@ -133,22 +133,23 @@ function allStorage() {
 
 
 
-function addCityToLocalStorage(cityNumber) {
+function addCityToLocalStorage(cityNumber, cityName) {
     let jsonMessage = { city: cityName };
     let json = JSON.stringify(jsonMessage);
     localStorage.setItem(cityNumber, json);
-    localStorage.setItem('citiesCount', ++counter);
+   
     
 }
 
-function getCityNumber(){
+function getCityNumber(cityName){
     const allCities = allStorage();
-    const cityName = text.value;
+    
     if (allCities.indexOf(cityName) == -1) {
         let counter = localStorage.getItem('citiesCount');
         if (counter == null) {
             counter = 0;
         }
+        localStorage.setItem('citiesCount', ++counter);
         let cityNumber = 'cityN' + counter;
         return cityNumber;
     }
@@ -177,7 +178,7 @@ async function getResponse(response) {
 function createCityCard(cityName, cityNumber) {
     let loader = document.getElementById('loader');
     loader.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+
 
 
     let queryWeather = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=a079906fe74d05d272d283d1f9b625de';
@@ -235,7 +236,9 @@ function createCityCard(cityName, cityNumber) {
             console.error("Unknown city");
             text.value = '';
             button.disabled = true;
+            loader.style.display = 'none';
 
+            return;
         });
 
         mainLine.appendChild(name);
@@ -266,20 +269,27 @@ function createCityCard(cityName, cityNumber) {
 
         
     loader.style.display = 'none';
-    document.body.style.overflow = 'auto';
+
 
         
     
 }
 
 function addCity() {
-    const cityNumber = getCityNumber();
     const cityName = text.value;
+    const cityNumber = getCityNumber(cityName);
+    
     let city = createCityCard(cityName, cityNumber);
+    if (city) {
+        cards.appendChild(city);
+        addCityToLocalStorage(cityNumber, cityName);
+    }
+    else {
+        alert("Unknown City");
+        
+    }
 
-        cards.appendChild();
-
-    addCityToLocalStorage(cityNumber);
+    
     text.value = "";
     addBtn.disabled = true;
 
